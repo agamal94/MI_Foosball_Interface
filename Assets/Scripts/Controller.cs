@@ -138,12 +138,6 @@ public class Controller : MonoBehaviour
             rod_index = 1;
             kick = true;
         }
-        if (Input.GetKey("c")) // red attack kicks
-        {
-            temp = red_attack;
-            rod_index = 2;
-            kick = true;
-        }
         if (Input.GetKey("d")) // red defence kicks
         {
             temp = red_defence;
@@ -171,18 +165,6 @@ public class Controller : MonoBehaviour
         if (Input.GetKey("4")) // blue defence moves down
         {
             temp = blue_defence;
-            rod_index = 0;
-            translate = true;
-        }
-        if (Input.GetKey("5")) // red attack moves up
-        {
-            temp = red_attack;
-            rod_index = 1;
-            translate = true;
-        }
-        if (Input.GetKey("6")) // red attack moves down
-        {
-            temp = red_attack;
             rod_index = 0;
             translate = true;
         }
