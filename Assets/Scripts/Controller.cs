@@ -1,211 +1,254 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
+using System;
+using CielaSpike;
+using UnityEngine.SceneManagement;
+using System.IO;
+using System.Text;
+using System.Globalization;
+using UnityEngine.UI;
 
-public class Controller : MonoBehaviour
-{
-    public GameObject blue_attack;
-    public GameObject blue_defence;
-    public GameObject red_attack;
-    public GameObject red_defence;
-    public GameObject ball;
-    public GameObject temp;
-    public GameObject red_score_obj;
-    public GameObject blue_score_obj;
-    bool kick = false;
-    bool translate = false;
-    Quaternion[] rot = new Quaternion[4]; 
-    private float rotation_count = 0;
-    private float translation_count = 0;
-    private float prev_time;
-    private float current_time;
-    private float ball_x_step_size = 12F;
-    private float ball_y_step_size = 12F;
-    private int rod_index,scorered,scoreblue,ball_prevx, ball_prevy;
-    private int ball_x_mapping,ball_y_mapping;
-    private int ball_x, ball_y; // the coordinates of the ball should be changed with the input.
-    public Text red_score;
-    public Text blue_score;
-    Vector3 ball_postion;
-    private float input_check_freq = 1; // this is the freq by which the controller checks for the input, 1 is 1 second
-    private float kick_animation_speed = 300 * Time.deltaTime;
-    private float translate_animation_speed = 200 * Time.deltaTime;
+public class Controller : MonoBehaviour {
+
     // Use this for initialization
-    void Start()
-    {
-        load_objects();
-        original_rotations();
-        prev_time = Time.time;
-        scorered = 1;
-        scoreblue = 0;
-        red_score = GetComponent<Text>();
-        blue_score = GetComponent<Text>();
-    }
-    // just loading objects
-    void load_objects()
-    {
-        blue_attack = GameObject.Find("TS_Blue_Team_Attack");
-        blue_defence = GameObject.Find("TS_Blue_Team_Deffence");
-        red_attack = GameObject.Find("TS_Red_Team_Attack");
-        red_defence = GameObject.Find("TS_Red_Team_Defence");
-        ball = GameObject.Find("TS_Ball");
-        red_score_obj = GameObject.Find("Red_Score");
-        blue_score_obj = GameObject.Find("Blue_Score");
-    }
-    // ignore
-    void original_rotations()
-    {
-        rot[0] = blue_attack.transform.rotation;
-        rot[1] = blue_defence.transform.rotation;
-        rot[2] = red_attack.transform.rotation;
-        rot[3] = red_defence.transform.rotation;
-    }
-    //rod kick, by changing the value of kick_animation_speed, you can control the speed of the kick animation
-    void kick_animation(GameObject animate, int original_rotation_index)
-    {
+    public Animation Rod1Roll;
+    public GameObject Rod1;
 
-        if (rotation_count < 45)
-        {
-            if (animate == blue_attack || animate == blue_defence)
-                animate.transform.Rotate(kick_animation_speed, 0, 0);
-            else
-                animate.transform.Rotate(-kick_animation_speed, 0, 0);
-            rotation_count += kick_animation_speed;
-        }
-        else if (rotation_count < 135)
-        {
-            if (animate == blue_attack || animate == blue_defence)
-                animate.transform.Rotate(-kick_animation_speed, 0, 0);
-            else
-                animate.transform.Rotate(kick_animation_speed, 0, 0);
-            rotation_count += kick_animation_speed;
-        }
-        else if (rotation_count > 135 && rotation_count < 180)
-        {
-            if (animate == blue_attack || animate == blue_defence)
-                animate.transform.Rotate(kick_animation_speed, 0, 0);
-            else
-                 animate.transform.Rotate(-kick_animation_speed, 0, 0);
-            rotation_count += kick_animation_speed;
-        }
-        else
-        {
-            rotation_count = 0;
-            animate.transform.rotation = rot[original_rotation_index];
-            kick = false;
-        }
-    }
-    //translate a rod, by changing the value of translate_animation_speed, you can control the speed of the translation animation
-    void translation(GameObject translate_obj, int up)
-    {
-        if (up == 1 && translation_count < 10)
-        {
-            translate_obj.transform.Translate(translate_animation_speed, 0, 0);
-            translation_count += translate_animation_speed;
-        }
-        if (up == 0 && translation_count < 10)
-        {
-            translate_obj.transform.Translate(-translate_animation_speed, 0, 0);
-            translation_count += translate_animation_speed;
-        }
-        if (translation_count >= 10)
-        {
-            translate = false;
-            translation_count = 0;
-        }
+    FileStream logFile;
+    TextWriter tw;
 
-    }
-    //translate the ball (ignore)
-    void translate_ball(int y, int x)
-    {
-        ball_postion.x = y * ball_y_step_size; 
-        ball_postion.y = 0;
-        ball_postion.z = x * ball_x_step_size;
-        ball.transform.localPosition = ball_postion;
-    }
-    // inputs for translation and rotation of rods, should be changed to the inputs by integration team
-    void check_inputs()
-    {
-        if (Input.GetKey("a"))  // blue attack kicks
-        {
-            temp = blue_attack;
-            rod_index = 0;
-            kick = true;
-        }
-        if (Input.GetKey("b")) // blue_defence kicks
-        {
-            temp = blue_defence;
-            rod_index = 1;
-            kick = true;
-        }
-        if (Input.GetKey("d")) // red defence kicks
-        {
-            temp = red_defence;
-            rod_index = 3;
-            kick = true;
-        }
-        if (Input.GetKey("1")) // blue attack moves up
-        {
-            temp = blue_attack;
-            rod_index = 1;
-            translate = true;
-        }
-        if (Input.GetKey("2")) // blue attack moves down
-        {
-            temp = blue_attack;
-            rod_index = 0;
-            translate = true;
-        }
-        if (Input.GetKey("3")) // blue defence moves up
-        {
-            temp = blue_defence;
-            rod_index = 1;
-            translate = true;
-        }
-        if (Input.GetKey("4")) // blue defence moves down
-        {
-            temp = blue_defence;
-            rod_index = 0;
-            translate = true;
-        }
-        if (Input.GetKey("7")) // red defence moves up
-        {
-            temp = red_defence;
-            rod_index = 1;
-            translate = true;
-        }
-        if (Input.GetKey("8")) // red defence moves down
-        {
-            temp = red_defence;
-            rod_index = 0;
-            translate = true;
-        }
-            
-       
+    public Animation Rod2Roll;
+    public GameObject Rod2;
+
+    public Animation Rod3Roll;
+    public GameObject Rod3;
+
+    public Animation Rod4Roll;
+    public GameObject Rod4;
+
+    public Animation[] RodRolls;
+
+
+    public Animation BallKick;
+    public GameObject Ball;
+
+    public GameObject UIManager;
+
+
+    public GameObject EscapeMenu;
+    public string myTeam;
+
+	public Text RedScore;
+	public Text BlueScore;
+
+
+
+    private string[] rodActions = { "1 NoAction", "2 NoAction", "3 NoAction", "4 NoAction" };
+    private string[] lastStepRodActions = { "1 NoAction", "2 NoAction", "3 NoAction", "4 NoAction" };
+    private Vector3 upVector = new Vector3(0.0f, 0.0f, -12.0f);
+    Vector3 targetPosition1 = new Vector3(0.0f, 0.0f, 0.0f);
+    Vector3 targetPosition2 = new Vector3(0.0f, 0.0f, 0.0f);
+    Vector3 targetPosition3 = new Vector3(0.0f, 0.0f, 0.0f);
+    Vector3 targetPosition4 = new Vector3(0.0f, 0.0f, 0.0f);
+    Vector3 ballTargetPosition = new Vector3(0.0f, 0.0f, 0.0f);
+
+    float marginX = (137.0f / 11.0f) / 2.0f;
+    float marginY = (83.2f / 7.0f) / 2.0f;
+    float stepX = (137.0f / 11.0f);
+    float stepY = (83.2f / 7.0f);
+
+    int rl = 5;
+    int ud = 3;
+	int reds = 0;
+	int blues = 0;
+
+    void Start() {
+
+        targetPosition1 = Rod1.transform.position;
+        targetPosition2 = Rod2.transform.position;
+        targetPosition3 = Rod3.transform.position;
+        targetPosition4 = Rod4.transform.position;
+        ballTargetPosition = Ball.transform.position;
+        print("MI Project Test");
+        Rod1Roll = Rod1.GetComponent<Animation>();
+        Rod2Roll = Rod2.GetComponent<Animation>();
+        Rod3Roll = Rod3.GetComponent<Animation>();
+        Rod4Roll = Rod4.GetComponent<Animation>();
+        RodRolls = new Animation[4];
+        RodRolls[0] = Rod1Roll;
+        RodRolls[1] = Rod2Roll;
+        RodRolls[2] = Rod3Roll;
+        RodRolls[3] = Rod4Roll;
 
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        current_time = Time.time;
-        if (current_time >= prev_time + 1)
-        {
-            prev_time = current_time;
-            check_inputs();
-            ball_y = 3;
-            ball_x = 5;
-            ball_y_mapping = ball_y - 3;
-            ball_x_mapping = -ball_x + 5;
-            translate_ball(ball_y_mapping, ball_x_mapping);
-          
-        }
-        if (kick)
-            kick_animation(temp, rod_index);
-        if (translate)
-            translation(temp, rod_index);
+    void Update() {
+        Rod1.transform.position = Vector3.Lerp(Rod1.transform.position, targetPosition1, Time.deltaTime * 10);
+        Rod2.transform.position = Vector3.Lerp(Rod2.transform.position, targetPosition2, Time.deltaTime * 10);
+        Rod3.transform.position = Vector3.Lerp(Rod3.transform.position, targetPosition3, Time.deltaTime * 10);
+        Rod4.transform.position = Vector3.Lerp(Rod4.transform.position, targetPosition4, Time.deltaTime * 10);
+        Ball.transform.position = Vector3.Lerp(Ball.transform.position, ballTargetPosition, Time.deltaTime * 10);
+		ballMovement (rl, ud);
+
+		checkInput ();
 
 
     }
-}
 
+
+    void RodMovement(int rodNumber, int direction) {
+        switch (rodNumber)
+        {
+            case 1:
+                if (direction == 1) {
+                    targetPosition1 += upVector;
+                } else if (direction == -1) {
+                    targetPosition1 -= upVector;
+                }
+                break;
+            case 2:
+                if (direction == 1) {
+                    targetPosition2 += upVector;
+                } else if (direction == -1) {
+                    targetPosition2 -= upVector;
+                }
+                break;
+            case 3:
+                if (direction == 1) {
+                    targetPosition3 += upVector;
+                } else if (direction == -1) {
+                    targetPosition3 -= upVector;
+                }
+                break;
+            case 4:
+                if (direction == 1) {
+                    targetPosition4 += upVector;
+                } else if (direction == -1) {
+                    targetPosition4 -= upVector;
+                }
+                break;
+        }
+
+    }
+
+    void ballMovement(int x, int y) {
+        ballTargetPosition = new Vector3((-1 * x * stepX - marginX) + 68.5f, 0, (-1 * y * stepY - marginY) + 41.6f);
+    }
+		
+
+    public void ExitToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void ShowMenu()
+    {
+        EscapeMenu.SetActive(true);
+    }
+
+    public void HideMenu()
+    {
+        EscapeMenu.SetActive(false);
+    }
+
+	public void setScore(int red, int blue)
+	{
+		RedScore.text = red.ToString();
+		BlueScore.text = blue.ToString();
+	}
+
+	public void checkInput()
+	{
+
+		if (Input.GetKeyDown(KeyCode.A))
+		{
+			RodRolls [0].Play ();
+		}
+		else if (Input.GetKeyDown(KeyCode.S))
+		{
+			RodRolls [1].Play ();
+		}
+		else if (Input.GetKeyDown(KeyCode.D))
+		{
+			RodRolls [2].Play ();
+		}
+		else if (Input.GetKeyDown(KeyCode.F))
+		{
+			RodRolls [3].Play ();
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha1))
+		{
+			RodMovement (1, 1);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha2))
+		{
+			RodMovement (1, -1);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha3))
+		{
+			RodMovement (2, 1);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha4))
+		{
+			RodMovement (2, -1);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha5))
+		{
+			RodMovement (3, 1);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha6))
+		{
+			RodMovement (3, -1);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha7))
+		{
+			RodMovement (4, 1);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha8))
+		{
+			RodMovement (4, -1);
+		}
+		else if (Input.GetKeyDown(KeyCode.UpArrow))
+		{
+			ud++;
+		}
+		else if (Input.GetKeyDown(KeyCode.DownArrow))
+		{
+			ud--;
+		}
+		else if (Input.GetKeyDown(KeyCode.RightArrow))
+		{
+			rl++;
+		}
+		else if (Input.GetKeyDown(KeyCode.LeftArrow))
+		{
+			rl--;
+		}
+		else if (Input.GetKeyDown(KeyCode.Equals))
+		{
+			setScore (reds, ++blues);
+		}
+		else if (Input.GetKeyDown(KeyCode.Minus))
+		{
+			setScore (reds, --blues);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha9))
+		{
+			setScore (++reds, blues);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha0))
+		{
+			setScore (--reds, blues);
+		}
+		else if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			ShowMenu();
+		}
+		
+	}
+
+		
+  
+    
+}
