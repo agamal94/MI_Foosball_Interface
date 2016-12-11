@@ -3,6 +3,11 @@ using System;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using CielaSpike;
+using System.Net;
+using System.Net.Sockets;
+using System.IO;
+using System.IO.Pipes;
 
 
 public class UIManager : MonoBehaviour
@@ -71,17 +76,80 @@ public class UIManager : MonoBehaviour
     {
         anim1.Play("LeavePlayMenu", PlayMode.StopAll);
     }
+	private void ConnectWithImplementation()
+	{
+		SharedObjects.AgentProcess = System.Diagnostics.Process.Start(@"Implementation.exe");
+		SharedObjects.PipeUpServer = new NamedPipeServerStream(SharedObjects.UP_PIPE);
 
+
+
+		SharedObjects.PipeUpServer.WaitForConnection();
+		SharedObjects.PipeDownServer = new NamedPipeServerStream(SharedObjects.DOWN_PIPE);
+
+		SharedObjects.PipeDownServer.WaitForConnection();
+		SharedObjects.Reader = new StreamReader(SharedObjects.PipeUpServer);
+		SharedObjects.Writer = new StreamWriter(SharedObjects.PipeDownServer);
+	}
+	public  string GetLocalIPAddress()
+	{
+		var host = Dns.GetHostEntry(Dns.GetHostName());
+		foreach (var ip in host.AddressList)
+		{
+			if (ip.AddressFamily == AddressFamily.InterNetwork)
+			{
+				return ip.ToString();
+			}
+		}
+		return null;
+	}
     public void HostGame(Animation anim1)
     {
         anim1.Play("loading", PlayMode.StopAll);
         PlayMenu.SetActive(false);
-        loadingimg.gameObject.SetActive(true);
-		Invoke ("LoadLevel", 2);
+		loadingimg.gameObject.SetActive(true);
+		this.StartCoroutineAsync(InitHostGame());
     }
 
+	private IEnumerator InitHostGame()
+	{
+		SharedObjects.Host = true;
+		ConnectWithImplementation();
+		SharedObjects.Writer.Write("RED " + alphatext + " " + betatext + " " + epsilontext);
+		SharedObjects.Writer.Flush();
+		try
+		{
+			// Set the TcpListener on port 13000.
+			Int32 port = 3000;
+			IPAddress localAddr = IPAddress.Parse(GetLocalIPAddress());
 
 
+			SharedObjects.TcpServer = new TcpListener(localAddr, port);
+
+			// Start listening for client requests.
+			SharedObjects.TcpServer.Start();
+
+			Debug.Log("Waiting for a connection... ");
+
+			// Perform a blocking call to accept requests.
+			// You could also user server.AcceptSocket() here.
+			SharedObjects.TcpClient = SharedObjects.TcpServer.AcceptTcpClient();
+			Debug.Log("Connected!");
+
+
+			// Get a stream object for reading and writing
+			SharedObjects.NetworkWriter = new BinaryWriter(SharedObjects.TcpClient.GetStream());
+			SharedObjects.NetworkReader = new BinaryReader(SharedObjects.TcpClient.GetStream());
+		}
+		catch (SocketException e)
+		{
+			Debug.Log("SocketException: " + e);
+			yield break;
+		}
+
+		yield return Ninja.JumpToUnity;
+		LoadLevel();
+		yield break;
+	}
 
     public void JoinGame(Animation anim1)
     {
@@ -89,9 +157,34 @@ public class UIManager : MonoBehaviour
         PlayMenu.SetActive(false);
         loadingimg.gameObject.SetActive(true);
 		Debug.Log ("Ip is: " + getHostIp());
-		Invoke ("LoadLevel", 2);
+		this.StartCoroutineAsync(InitGuestGame());
     }
 
+	private IEnumerator InitGuestGame()
+	{
+		SharedObjects.Host = false;
+		ConnectWithImplementation();
+		SharedObjects.Writer.Write("BLUE");
+		SharedObjects.Writer.Flush();
+		try
+		{
+			Int32 port = 3000;
+			//String localIPAddress;
+			SharedObjects.TcpClient = new TcpClient(getHostIp(), port);
+
+			SharedObjects.NetworkWriter = new BinaryWriter(SharedObjects.TcpClient.GetStream());
+			SharedObjects.NetworkReader = new BinaryReader(SharedObjects.TcpClient.GetStream());
+		}
+		catch (SocketException e)
+		{
+			Debug.Log("SocketException: " + e);
+			yield break;
+		}
+
+		yield return Ninja.JumpToUnity;
+		LoadLevel();
+		yield break;
+	}
 
     void LoadLevel()
     {
@@ -102,5 +195,70 @@ public class UIManager : MonoBehaviour
 	{
 		return HostIptext.text.ToString ();
 	}
-
+	void OnApplicationQuit()
+	{
+		StopAllCoroutines();
+		if (SharedObjects.Writer != null)
+		{
+			SharedObjects.Writer.Close();
+			SharedObjects.Writer = null;
+		}
+		if (SharedObjects.Reader != null)
+		{
+			SharedObjects.Reader.Close();
+			SharedObjects.Reader = null;
+		}
+		if (SharedObjects.AgentProcess != null)
+		{
+			SharedObjects.AgentProcess.Kill();
+			SharedObjects.AgentProcess = null;
+		}
+		if (SharedObjects.PipeUpServer != null)
+		{
+			SharedObjects.PipeUpServer.Close();
+			SharedObjects.PipeUpServer.Dispose();
+			SharedObjects.PipeUpServer = null;
+		}
+		if (SharedObjects.PipeDownServer != null)
+		{
+			SharedObjects.PipeDownServer.Close();
+			SharedObjects.PipeDownServer.Dispose();
+			SharedObjects.PipeDownServer = null;
+		}
+		if (SharedObjects.NetworkReader != null)
+		{
+			SharedObjects.NetworkReader.Close();
+			SharedObjects.NetworkReader = null;
+		}
+		if (SharedObjects.NetworkWriter != null)
+		{
+			SharedObjects.NetworkWriter.Close();
+			SharedObjects.NetworkWriter = null;
+		}
+		if (SharedObjects.TcpClient != null)
+		{
+			SharedObjects.TcpClient.Close();
+			SharedObjects.TcpClient = null;
+		}
+		if (SharedObjects.TcpServer != null)
+		{
+			SharedObjects.TcpServer.Stop();
+			SharedObjects.TcpServer = null;
+		}
+	}
+}
+public class SharedObjects
+{
+	public static NamedPipeServerStream PipeUpServer;
+	public static NamedPipeServerStream PipeDownServer;
+	public static StreamWriter Writer;
+	public static StreamReader Reader;
+	public static bool Host;
+	public static TcpListener TcpServer;
+	public static BinaryWriter NetworkWriter;
+	public static BinaryReader NetworkReader;
+	public static TcpClient TcpClient;
+	public static System.Diagnostics.Process AgentProcess;
+	public const string UP_PIPE = "ImplementationToIntegrationUpPipe";
+	public const string DOWN_PIPE = "ImplementationToIntegrationDownPipe";
 }
