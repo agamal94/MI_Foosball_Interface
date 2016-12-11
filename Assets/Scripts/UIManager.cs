@@ -136,10 +136,10 @@ public class UIManager : MonoBehaviour
 			Debug.Log("Connected!");
 
 
-			// Get a stream object for reading and writing
-			SharedObjects.NetworkWriter = new BinaryWriter(SharedObjects.TcpClient.GetStream());
-			SharedObjects.NetworkReader = new BinaryReader(SharedObjects.TcpClient.GetStream());
-		}
+            // Get a stream object for reading and writing
+
+            SharedObjects.TcpStream = SharedObjects.TcpClient.GetStream();
+        }
 		catch (SocketException e)
 		{
 			Debug.Log("SocketException: " + e);
@@ -172,8 +172,7 @@ public class UIManager : MonoBehaviour
 			//String localIPAddress;
 			SharedObjects.TcpClient = new TcpClient(getHostIp(), port);
 
-			SharedObjects.NetworkWriter = new BinaryWriter(SharedObjects.TcpClient.GetStream());
-			SharedObjects.NetworkReader = new BinaryReader(SharedObjects.TcpClient.GetStream());
+			SharedObjects.TcpStream = SharedObjects.TcpClient.GetStream();
 		}
 		catch (SocketException e)
 		{
@@ -225,15 +224,10 @@ public class UIManager : MonoBehaviour
 			SharedObjects.PipeDownServer.Dispose();
 			SharedObjects.PipeDownServer = null;
 		}
-		if (SharedObjects.NetworkReader != null)
+		if (SharedObjects.TcpStream != null)
 		{
-			SharedObjects.NetworkReader.Close();
-			SharedObjects.NetworkReader = null;
-		}
-		if (SharedObjects.NetworkWriter != null)
-		{
-			SharedObjects.NetworkWriter.Close();
-			SharedObjects.NetworkWriter = null;
+			SharedObjects.TcpStream.Close();
+			SharedObjects.TcpStream = null;
 		}
 		if (SharedObjects.TcpClient != null)
 		{
@@ -255,8 +249,7 @@ public class SharedObjects
 	public static StreamReader Reader;
 	public static bool Host;
 	public static TcpListener TcpServer;
-	public static BinaryWriter NetworkWriter;
-	public static BinaryReader NetworkReader;
+	public static NetworkStream TcpStream;
 	public static TcpClient TcpClient;
 	public static System.Diagnostics.Process AgentProcess;
 	public const string UP_PIPE = "ImplementationToIntegrationUpPipe";

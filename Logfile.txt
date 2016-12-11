@@ -1,0 +1,5 @@
+23:41:30 recv >>> new_step
+23:41:30 recv >>> no_action 1
+23:41:30 recv >>> kick 3 1 0
+23:41:30 send >>> no_action 2
+23:41:30 send >>> no_action 4

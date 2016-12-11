@@ -147,15 +147,10 @@ public class Controller : MonoBehaviour {
 			SharedObjects.PipeDownServer.Dispose();
 			SharedObjects.PipeDownServer = null;
 		}
-		if (SharedObjects.NetworkReader != null)
+		if (SharedObjects.TcpStream != null)
 		{
-			SharedObjects.NetworkReader.Close();
-			SharedObjects.NetworkReader = null;
-		}
-		if (SharedObjects.NetworkWriter != null)
-		{
-			SharedObjects.NetworkWriter.Close();
-			SharedObjects.NetworkWriter = null;
+			SharedObjects.TcpStream.Close();
+			SharedObjects.TcpStream = null;
 		}
 		if (SharedObjects.TcpClient != null)
 		{
@@ -248,15 +243,10 @@ public class Controller : MonoBehaviour {
 			SharedObjects.PipeDownServer.Dispose();
 			SharedObjects.PipeDownServer = null;
 		}
-		if (SharedObjects.NetworkReader != null)
+		if (SharedObjects.TcpStream != null)
 		{
-			SharedObjects.NetworkReader.Close();
-			SharedObjects.NetworkReader = null;
-		}
-		if (SharedObjects.NetworkWriter != null)
-		{
-			SharedObjects.NetworkWriter.Close();
-			SharedObjects.NetworkWriter = null;
+			SharedObjects.TcpStream.Close();
+			SharedObjects.TcpStream = null;
 		}
 		if (SharedObjects.TcpClient != null)
 		{
@@ -389,11 +379,26 @@ public class Controller : MonoBehaviour {
 	private IEnumerator SendTimeStepStart() {
 		if (SharedObjects.Host)
 		{
-			SharedObjects.NetworkWriter.Write(NEW_STEP);
+            WriteToNetworkStream(NEW_STEP);
 		}
 		yield break;
 	}
-	private void parseRodAction(string s)
+
+    private void WriteToNetworkStream(string s)
+    {
+        byte[] buffer = ASCIIEncoding.ASCII.GetBytes(s + "\n");
+        SharedObjects.TcpStream.Write(buffer, 0, buffer.Length);
+    }
+
+
+    private string ReadFromNetworkStream()
+    {
+        byte[] buffer = new byte[SharedObjects.TcpClient.ReceiveBufferSize];
+        int bytesRead = SharedObjects.TcpStream.Read(buffer, 0, SharedObjects.TcpClient.ReceiveBufferSize);
+        string message = ASCIIEncoding.ASCII.GetString(buffer, 0, bytesRead);
+        return message;
+    }
+    private void parseRodAction(string s)
 	{
 		string[] rodSplit = s.Split(' ');
 		if (rodSplit[1] == "NoAction")
@@ -428,7 +433,7 @@ public class Controller : MonoBehaviour {
 
 			Message = "kick" + " " + rodSplit[0] + " " + rodSplit[3] + " " + rodSplit[2];
 		}
-		SharedObjects.NetworkWriter.Write(Message);
+        WriteToNetworkStream(Message);
 		DateTime localDate = DateTime.Now;
 		textWriter.WriteLine(localDate.ToString("HH:mm:ss") + " send"+" >>> "+Message);
 
@@ -444,7 +449,6 @@ public class Controller : MonoBehaviour {
 		SharedObjects.Writer.Write(rodActions[0] + " " + rodActions[1] + " " + rodActions[2] + " " + rodActions[3]);
 		SharedObjects.Writer.Flush();
 		string ballPositionScore = SharedObjects.Reader.ReadLine();
-		Debug.Log (ballPositionScore);
 		string[] ballPositionsScore;
 		ballPositionsScore = ballPositionScore.Split(' ');
 		yield return Ninja.JumpToUnity;
@@ -476,7 +480,9 @@ public class Controller : MonoBehaviour {
 
 	private void parseOpponentAction(string s)
 	{
-		string[] splittedMessage = s.Split(' ');
+
+        Debug.Log(s);
+        string[] splittedMessage = s.Split(' ');
 		if(splittedMessage[0]=="no_action")
 		{
 			lastStepRodActions[Int32.Parse(splittedMessage[1])-1] = splittedMessage[1] + " NoAction";
@@ -491,32 +497,35 @@ public class Controller : MonoBehaviour {
 		}
 
 	}
-	private IEnumerator OpponentAgent()
+    private IEnumerator OpponentAgent()
 	{
 
 		while (true)
 		{
 			yield return Ninja.JumpBack;
-			string MessageRead = "";
+			string MessageRead;
 			try{
-			MessageRead = SharedObjects.NetworkReader.ReadString();
+			MessageRead = ReadFromNetworkStream();
 			}
 			catch(Exception){
 				yield break;
 			}
 			yield return Ninja.JumpToUnity;
-			if (MessageRead==NEW_STEP)
-			{
+            foreach (string Message in MessageRead.Split(new char[] { '\n' } , StringSplitOptions.RemoveEmptyEntries))
+            {
+                if (Message == NEW_STEP)
+                {
 
-				this.StartCoroutineAsync(FriendlyAgent());
-			}
-			else
-			{
-				parseOpponentAction(MessageRead);
-			}
-			DateTime localDate = DateTime.Now;
+                    this.StartCoroutineAsync(FriendlyAgent());
+                }
+                else
+                {
+                    parseOpponentAction(Message);
+                }
+                DateTime localDate = DateTime.Now;
 
-			textWriter.WriteLine(localDate.ToString("HH:mm:ss") + " recv" + " >>> " + MessageRead);
+                textWriter.WriteLine(localDate.ToString("HH:mm:ss") + " recv" + " >>> " + Message);
+            }
 
 		}
 
