@@ -51,6 +51,10 @@ public class Controller : MonoBehaviour {
     Vector3 targetPosition2 = new Vector3(0.0f, 0.0f, 0.0f);
     Vector3 targetPosition3 = new Vector3(0.0f, 0.0f, 0.0f);
     Vector3 targetPosition4 = new Vector3(0.0f, 0.0f, 0.0f);
+	Vector3 rod1init;
+	Vector3 rod2init;
+	Vector3 rod3init;
+	Vector3 rod4init;
     Vector3 ballTargetPosition = new Vector3(0.0f, 0.0f, 0.0f);
 
     float marginX = (137.0f / 11.0f) / 2.0f;
@@ -76,6 +80,10 @@ public class Controller : MonoBehaviour {
         targetPosition2 = Rod2.transform.position;
         targetPosition3 = Rod3.transform.position;
         targetPosition4 = Rod4.transform.position;
+		rod1init = Rod1.transform.position;
+		rod2init = Rod2.transform.position;
+		rod3init = Rod3.transform.position;
+		rod4init = Rod4.transform.position;
         ballTargetPosition = Ball.transform.position;
         print("MI Project Test");
         Rod1Roll = Rod1.GetComponent<Animation>();
@@ -178,30 +186,30 @@ public class Controller : MonoBehaviour {
         switch (rodNumber)
         {
             case 1:
-                if (direction == 1) {
+			if (direction == 1 && Mathf.Abs(targetPosition1.z) < 50.0f) {
                     targetPosition1 += upVector;
-                } else if (direction == -1) {
+			} else if (direction == -1 && Mathf.Abs(targetPosition1.z) > 30.0f) {
                     targetPosition1 -= upVector;
                 }
                 break;
             case 2:
-                if (direction == 1) {
+			if (direction == 1 && Mathf.Abs(targetPosition2.z) > 30.0f) {
                     targetPosition2 += upVector;
-                } else if (direction == -1) {
+			} else if (direction == -1 && Mathf.Abs(targetPosition2.z) < 50.0f) {
                     targetPosition2 -= upVector;
                 }
                 break;
             case 3:
-                if (direction == 1) {
+			if (direction == 1 && Mathf.Abs(targetPosition3.z) < 50.0f) {
                     targetPosition3 += upVector;
-                } else if (direction == -1) {
+			} else if (direction == -1 && Mathf.Abs(targetPosition3.z) > 30.0f) {
                     targetPosition3 -= upVector;
                 }
                 break;
             case 4:
-                if (direction == 1) {
+			if (direction == 1 && Mathf.Abs(targetPosition4.z) > 30.0f) {
                     targetPosition4 += upVector;
-                } else if (direction == -1) {
+			} else if (direction == -1 && Mathf.Abs(targetPosition4.z) < 50.0f) {
                     targetPosition4 -= upVector;
                 }
                 break;
@@ -292,6 +300,11 @@ public class Controller : MonoBehaviour {
 
     public void ResetRods()
     {
+		targetPosition1 = rod1init;
+		targetPosition2 = rod2init;
+		targetPosition3 = rod3init;
+		targetPosition4 = rod4init;
+
 
     }
 
@@ -314,7 +327,7 @@ public class Controller : MonoBehaviour {
 //		{
 //			RodRolls [3].Play ();
 //		}
-//		else if (Input.GetKeyDown(KeyCode.Alpha1))
+//		 if (Input.GetKeyDown(KeyCode.Alpha1))
 //		{
 //			RodMovement (1, 1);
 //		}
@@ -382,6 +395,11 @@ public class Controller : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
 			ShowMenu();
+		}
+
+		if (Input.GetKeyDown(KeyCode.Backspace))
+		{
+			ResetRods ();
 		}
 		
 	}

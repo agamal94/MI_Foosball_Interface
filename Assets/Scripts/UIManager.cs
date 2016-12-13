@@ -22,10 +22,16 @@ public class UIManager : MonoBehaviour
     public Text epsilontext;
 
 	public Text HostIptext;
+	public Text myIp;
 
 
     public Image loadingimg;
     public GameObject PlayMenu;
+
+	public void Start()
+	{
+		myIp.text = GetLocalIPAddress ();
+	}
 
     public void Update()
     {
@@ -92,15 +98,7 @@ public class UIManager : MonoBehaviour
 	}
 	public  string GetLocalIPAddress()
 	{
-		var host = Dns.GetHostEntry(Dns.GetHostName());
-		foreach (var ip in host.AddressList)
-		{
-			if (ip.AddressFamily == AddressFamily.InterNetwork)
-			{
-				return ip.ToString();
-			}
-		}
-		return null;
+		return Network.player.ipAddress.ToString();
 	}
     public void HostGame(Animation anim1)
     {
