@@ -114,13 +114,19 @@ public class UIManager : MonoBehaviour
 	{
 		SharedObjects.Host = true;
 		ConnectWithImplementation();
-		SharedObjects.Writer.Write("RED " + alphatext + " " + betatext + " " + epsilontext);
+        yield return Ninja.JumpToUnity;
+        string alpha = alphatext.ToString();
+        string beta = betatext.ToString();
+        string epsilon = epsilontext.ToString();
+        yield return Ninja.JumpBack;
+        SharedObjects.Writer.Write("RED " + alpha + " " + beta + " " + epsilon);
 		SharedObjects.Writer.Flush();
 		try
 		{
 			// Set the TcpListener on port 13000.
 			Int32 port = 3000;
-			IPAddress localAddr = IPAddress.Parse(GetLocalIPAddress());
+            Debug.Log(GetLocalIPAddress());
+            IPAddress localAddr = IPAddress.Parse(GetLocalIPAddress());
 
 
 			SharedObjects.TcpServer = new TcpListener(localAddr, port);
@@ -169,9 +175,8 @@ public class UIManager : MonoBehaviour
 		try
 		{
 			Int32 port = 3000;
-			//String localIPAddress;
-			SharedObjects.TcpClient = new TcpClient(getHostIp(), port);
-
+            //String localIPAddress;
+            SharedObjects.TcpClient = new TcpClient(getHostIp(), port);
 			SharedObjects.TcpStream = SharedObjects.TcpClient.GetStream();
 		}
 		catch (SocketException e)

@@ -386,15 +386,22 @@ public class Controller : MonoBehaviour {
 
     private void WriteToNetworkStream(string s)
     {
-        byte[] buffer = ASCIIEncoding.ASCII.GetBytes(s + "\n");
+        byte[] messageLength = new byte[1];
+        messageLength[0] = (byte)s.Length;
+        SharedObjects.TcpStream.Write(messageLength, 0, 1);
+        byte[] buffer = ASCIIEncoding.ASCII.GetBytes(s);
         SharedObjects.TcpStream.Write(buffer, 0, buffer.Length);
+        DateTime localDate = DateTime.Now;
+        textWriter.WriteLine(localDate.ToString("HH:mm:ss") + " send" + " >>> " + s);
     }
 
 
     private string ReadFromNetworkStream()
     {
-        byte[] buffer = new byte[SharedObjects.TcpClient.ReceiveBufferSize];
-        int bytesRead = SharedObjects.TcpStream.Read(buffer, 0, SharedObjects.TcpClient.ReceiveBufferSize);
+        byte[] messageLength = new byte[1];
+        SharedObjects.TcpStream.Read(messageLength, 0,1);
+        byte[] buffer = new byte[messageLength[0]];
+        int bytesRead = SharedObjects.TcpStream.Read(buffer, 0, messageLength[0]);
         string message = ASCIIEncoding.ASCII.GetString(buffer, 0, bytesRead);
         return message;
     }
@@ -434,8 +441,6 @@ public class Controller : MonoBehaviour {
 			Message = "kick" + " " + rodSplit[0] + " " + rodSplit[3] + " " + rodSplit[2];
 		}
         WriteToNetworkStream(Message);
-		DateTime localDate = DateTime.Now;
-		textWriter.WriteLine(localDate.ToString("HH:mm:ss") + " send"+" >>> "+Message);
 
 	}
 
@@ -500,34 +505,33 @@ public class Controller : MonoBehaviour {
     private IEnumerator OpponentAgent()
 	{
 
-		while (true)
-		{
-			yield return Ninja.JumpBack;
-			string MessageRead;
-			try{
-			MessageRead = ReadFromNetworkStream();
-			}
-			catch(Exception){
-				yield break;
-			}
-			yield return Ninja.JumpToUnity;
-            foreach (string Message in MessageRead.Split(new char[] { '\n' } , StringSplitOptions.RemoveEmptyEntries))
+        while (true)
+        {
+            yield return Ninja.JumpBack;
+            string Message;
+            try
             {
-                if (Message == NEW_STEP)
-                {
-
-                    this.StartCoroutineAsync(FriendlyAgent());
-                }
-                else
-                {
-                    parseOpponentAction(Message);
-                }
-                DateTime localDate = DateTime.Now;
-
-                textWriter.WriteLine(localDate.ToString("HH:mm:ss") + " recv" + " >>> " + Message);
+                Message = ReadFromNetworkStream();
             }
+            catch (Exception)
+            {
+                yield break;
+            }
+            yield return Ninja.JumpToUnity;
+            if (Message == NEW_STEP)
+            {
 
-		}
+                this.StartCoroutineAsync(FriendlyAgent());
+            }
+            else
+            {
+                parseOpponentAction(Message);
+            }
+            DateTime localDate = DateTime.Now;
+
+            textWriter.WriteLine(localDate.ToString("HH:mm:ss") + " recv" + " >>> " + Message);
+
+        }
 
 	} 
     

@@ -1,5 +1,1055 @@
-23:41:30 recv >>> new_step
-23:41:30 recv >>> no_action 1
-23:41:30 recv >>> kick 3 1 0
-23:41:30 send >>> no_action 2
-23:41:30 send >>> no_action 4
+16:00:53 recv >>> new_step
+16:00:53 send >>> no_action 2
+16:00:53 send >>> no_action 4
+16:00:53 recv >>> no_action 1
+16:00:53 recv >>> kick 3 2 -1
+16:00:54 recv >>> new_step
+16:00:54 send >>> no_action 2
+16:00:54 send >>> no_action 4
+16:00:54 recv >>> no_action 1
+16:00:54 recv >>> 1 3
+16:00:55 recv >>> new_step
+16:00:55 send >>> no_action 2
+16:00:55 send >>> no_action 4
+16:00:55 recv >>> no_action 1
+16:00:55 recv >>> -1 3
+16:00:56 recv >>> new_step
+16:00:56 send >>> no_action 2
+16:00:56 send >>> no_action 4
+16:00:56 recv >>> no_action 1
+16:00:56 recv >>> kick 3 4 1
+16:00:57 recv >>> new_step
+16:00:57 send >>> no_action 2
+16:00:57 send >>> no_action 4
+16:00:57 recv >>> no_action 1
+16:00:57 recv >>> 1 3
+16:00:58 recv >>> new_step
+16:00:58 send >>> no_action 2
+16:00:58 send >>> kick 4 1 0
+16:00:58 recv >>> no_action 1
+16:00:58 recv >>> no_action 3
+16:00:59 recv >>> new_step
+16:00:59 send >>> no_action 2
+16:00:59 send >>> kick 4 5 1
+16:00:59 recv >>> no_action 1
+16:00:59 recv >>> no_action 3
+16:01:00 recv >>> new_step
+16:01:00 send >>> no_action 2
+16:01:00 send >>> 1 4
+16:01:00 recv >>> no_action 1
+16:01:00 recv >>> -1 3
+16:01:01 recv >>> new_step
+16:01:01 send >>> no_action 2
+16:01:01 send >>> no_action 4
+16:01:01 recv >>> no_action 1
+16:01:01 recv >>> kick 3 1 -1
+16:01:02 recv >>> new_step
+16:01:02 send >>> no_action 2
+16:01:02 send >>> no_action 4
+16:01:02 recv >>> no_action 1
+16:01:02 recv >>> -1 3
+16:01:03 recv >>> new_step
+16:01:03 send >>> no_action 2
+16:01:03 send >>> no_action 4
+16:01:03 recv >>> no_action 1
+16:01:03 recv >>> kick 3 4 0
+16:01:04 recv >>> new_step
+16:01:04 send >>> no_action 2
+16:01:04 send >>> kick 4 5 1
+16:01:04 recv >>> no_action 1
+16:01:04 recv >>> no_action 3
+16:01:05 recv >>> new_step
+16:01:05 send >>> no_action 2
+16:01:05 send >>> -1 4
+16:01:05 recv >>> no_action 1
+16:01:05 recv >>> 1 3
+16:01:06 recv >>> new_step
+16:01:06 send >>> no_action 2
+16:01:06 send >>> no_action 4
+16:01:06 recv >>> no_action 1
+16:01:06 recv >>> 1 3
+16:01:07 recv >>> new_step
+16:01:07 send >>> no_action 2
+16:01:07 send >>> no_action 4
+16:01:07 recv >>> no_action 1
+16:01:07 recv >>> kick 3 5 -1
+16:01:08 recv >>> new_step
+16:01:08 send >>> no_action 2
+16:01:08 send >>> no_action 4
+16:01:08 recv >>> no_action 1
+16:01:08 recv >>> no_action 3
+16:01:09 recv >>> new_step
+16:01:09 send >>> no_action 2
+16:01:09 send >>> no_action 4
+16:01:09 recv >>> no_action 1
+16:01:09 recv >>> no_action 3
+16:01:10 recv >>> new_step
+16:01:10 send >>> no_action 2
+16:01:10 send >>> kick 4 1 0
+16:01:10 recv >>> no_action 1
+16:01:10 recv >>> no_action 3
+16:01:11 recv >>> new_step
+16:01:11 send >>> no_action 2
+16:01:11 send >>> kick 4 5 1
+16:01:11 recv >>> no_action 1
+16:01:11 recv >>> no_action 3
+16:01:12 recv >>> new_step
+16:01:12 send >>> no_action 2
+16:01:12 send >>> 1 4
+16:01:12 recv >>> no_action 1
+16:01:12 recv >>> -1 3
+16:01:13 recv >>> new_step
+16:01:13 send >>> no_action 2
+16:01:13 send >>> no_action 4
+16:01:13 recv >>> no_action 1
+16:01:13 recv >>> kick 3 1 1
+16:01:14 recv >>> new_step
+16:01:14 send >>> no_action 2
+16:01:14 send >>> no_action 4
+16:01:14 recv >>> no_action 1
+16:01:14 recv >>> 1 3
+16:01:15 recv >>> new_step
+16:01:15 send >>> no_action 2
+16:01:15 send >>> no_action 4
+16:01:15 recv >>> no_action 1
+16:01:15 recv >>> kick 3 4 -1
+16:01:16 recv >>> new_step
+16:01:16 send >>> no_action 2
+16:01:16 send >>> no_action 4
+16:01:16 recv >>> no_action 1
+16:01:16 recv >>> no_action 3
+16:01:17 recv >>> new_step
+16:01:17 send >>> no_action 2
+16:01:17 send >>> kick 4 1 0
+16:01:17 recv >>> no_action 1
+16:01:17 recv >>> no_action 3
+16:01:18 recv >>> new_step
+16:01:18 send >>> no_action 2
+16:01:18 send >>> kick 4 5 1
+16:01:18 recv >>> no_action 1
+16:01:18 recv >>> no_action 3
+16:01:19 recv >>> new_step
+16:01:19 send >>> no_action 2
+16:01:19 send >>> -1 4
+16:01:19 recv >>> no_action 1
+16:01:19 recv >>> no_action 3
+16:01:20 recv >>> new_step
+16:01:20 send >>> no_action 2
+16:01:20 send >>> no_action 4
+16:01:20 recv >>> no_action 1
+16:01:21 recv >>> kick 3 5 -1
+16:01:21 recv >>> new_step
+16:01:21 send >>> no_action 2
+16:01:21 send >>> no_action 4
+16:01:21 recv >>> no_action 1
+16:01:21 recv >>> no_action 3
+16:01:22 recv >>> new_step
+16:01:22 send >>> no_action 2
+16:01:22 send >>> no_action 4
+16:01:22 recv >>> no_action 1
+16:01:22 recv >>> no_action 3
+16:01:23 recv >>> new_step
+16:01:23 send >>> no_action 2
+16:01:23 send >>> kick 4 1 0
+16:01:23 recv >>> no_action 1
+16:01:24 recv >>> no_action 3
+16:01:24 recv >>> new_step
+16:01:24 send >>> no_action 2
+16:01:24 send >>> kick 4 5 1
+16:01:25 recv >>> no_action 1
+16:01:25 recv >>> no_action 3
+16:01:25 recv >>> new_step
+16:01:26 send >>> no_action 2
+16:01:26 send >>> 1 4
+16:01:26 recv >>> no_action 1
+16:01:26 recv >>> -1 3
+16:01:26 recv >>> new_step
+16:01:27 send >>> no_action 2
+16:01:27 send >>> no_action 4
+16:01:27 recv >>> no_action 1
+16:01:27 recv >>> kick 3 1 -1
+16:01:27 recv >>> new_step
+16:01:28 send >>> no_action 2
+16:01:28 send >>> no_action 4
+16:01:28 recv >>> no_action 1
+16:01:28 recv >>> -1 3
+16:01:28 recv >>> new_step
+16:01:29 send >>> no_action 2
+16:01:29 send >>> no_action 4
+16:01:29 recv >>> no_action 1
+16:01:29 recv >>> kick 3 4 0
+16:01:30 recv >>> new_step
+16:01:30 send >>> no_action 2
+16:01:30 send >>> kick 4 5 1
+16:01:30 recv >>> no_action 1
+16:01:30 recv >>> no_action 3
+16:01:31 recv >>> new_step
+16:01:31 send >>> no_action 2
+16:01:31 send >>> -1 4
+16:01:31 recv >>> no_action 1
+16:01:31 recv >>> 1 3
+16:01:32 recv >>> new_step
+16:01:32 send >>> no_action 2
+16:01:32 send >>> no_action 4
+16:01:32 recv >>> no_action 1
+16:01:32 recv >>> 1 3
+16:01:33 recv >>> new_step
+16:01:33 send >>> no_action 2
+16:01:33 send >>> no_action 4
+16:01:33 recv >>> no_action 1
+16:01:33 recv >>> kick 3 5 -1
+16:01:34 recv >>> new_step
+16:01:34 send >>> no_action 2
+16:01:34 send >>> no_action 4
+16:01:34 recv >>> no_action 1
+16:01:34 recv >>> no_action 3
+16:01:35 recv >>> new_step
+16:01:35 send >>> no_action 2
+16:01:35 send >>> no_action 4
+16:01:35 recv >>> no_action 1
+16:01:35 recv >>> no_action 3
+16:01:36 recv >>> new_step
+16:01:36 send >>> no_action 2
+16:01:36 send >>> kick 4 1 0
+16:01:36 recv >>> no_action 1
+16:01:36 recv >>> no_action 3
+16:01:37 recv >>> new_step
+16:01:37 send >>> no_action 2
+16:01:37 send >>> kick 4 5 1
+16:01:37 recv >>> no_action 1
+16:01:37 recv >>> no_action 3
+16:01:38 recv >>> new_step
+16:01:38 send >>> no_action 2
+16:01:38 send >>> 1 4
+16:01:38 recv >>> no_action 1
+16:01:38 recv >>> -1 3
+16:01:39 recv >>> new_step
+16:01:39 send >>> no_action 2
+16:01:39 send >>> no_action 4
+16:01:39 recv >>> no_action 1
+16:01:39 recv >>> kick 3 1 1
+16:01:40 recv >>> new_step
+16:01:40 send >>> no_action 2
+16:01:40 send >>> no_action 4
+16:01:40 recv >>> no_action 1
+16:01:40 recv >>> 1 3
+16:01:41 recv >>> new_step
+16:01:41 send >>> no_action 2
+16:01:41 send >>> no_action 4
+16:01:41 recv >>> no_action 1
+16:01:41 recv >>> kick 3 4 -1
+16:01:42 recv >>> new_step
+16:01:42 send >>> no_action 2
+16:01:42 send >>> no_action 4
+16:01:42 recv >>> no_action 1
+16:01:42 recv >>> no_action 3
+16:01:43 recv >>> new_step
+16:01:43 send >>> no_action 2
+16:01:43 send >>> kick 4 1 0
+16:01:43 recv >>> no_action 1
+16:01:43 recv >>> no_action 3
+16:01:44 recv >>> new_step
+16:01:44 send >>> no_action 2
+16:01:44 send >>> kick 4 5 1
+16:01:44 recv >>> no_action 1
+16:01:44 recv >>> no_action 3
+16:01:45 recv >>> new_step
+16:01:45 send >>> no_action 2
+16:01:45 send >>> -1 4
+16:01:45 recv >>> no_action 1
+16:01:45 recv >>> no_action 3
+16:01:46 recv >>> new_step
+16:01:46 send >>> no_action 2
+16:01:46 send >>> no_action 4
+16:01:46 recv >>> no_action 1
+16:01:46 recv >>> kick 3 5 -1
+16:01:47 recv >>> new_step
+16:01:47 send >>> no_action 2
+16:01:47 send >>> no_action 4
+16:01:47 recv >>> no_action 1
+16:01:47 recv >>> no_action 3
+16:01:48 recv >>> new_step
+16:01:48 send >>> no_action 2
+16:01:48 send >>> no_action 4
+16:01:48 recv >>> no_action 1
+16:01:48 recv >>> no_action 3
+16:01:49 recv >>> new_step
+16:01:49 send >>> no_action 2
+16:01:49 send >>> kick 4 1 0
+16:01:49 recv >>> no_action 1
+16:01:49 recv >>> no_action 3
+16:01:50 recv >>> new_step
+16:01:50 send >>> no_action 2
+16:01:50 send >>> kick 4 5 1
+16:01:50 recv >>> no_action 1
+16:01:50 recv >>> no_action 3
+16:01:51 recv >>> new_step
+16:01:51 send >>> no_action 2
+16:01:51 send >>> 1 4
+16:01:51 recv >>> no_action 1
+16:01:51 recv >>> -1 3
+16:01:52 recv >>> new_step
+16:01:52 send >>> no_action 2
+16:01:52 send >>> no_action 4
+16:01:52 recv >>> no_action 1
+16:01:52 recv >>> kick 3 1 1
+16:01:53 recv >>> new_step
+16:01:53 send >>> no_action 2
+16:01:53 send >>> no_action 4
+16:01:53 recv >>> no_action 1
+16:01:53 recv >>> 1 3
+16:01:54 recv >>> new_step
+16:01:54 send >>> no_action 2
+16:01:54 send >>> no_action 4
+16:01:54 recv >>> no_action 1
+16:01:54 recv >>> kick 3 4 -1
+16:01:55 recv >>> new_step
+16:01:55 send >>> no_action 2
+16:01:55 send >>> no_action 4
+16:01:55 recv >>> no_action 1
+16:01:55 recv >>> no_action 3
+16:01:56 recv >>> new_step
+16:01:56 send >>> no_action 2
+16:01:56 send >>> kick 4 1 0
+16:01:56 recv >>> no_action 1
+16:01:56 recv >>> no_action 3
+16:01:57 recv >>> new_step
+16:01:57 send >>> no_action 2
+16:01:57 send >>> kick 4 5 1
+16:01:57 recv >>> no_action 1
+16:01:57 recv >>> no_action 3
+16:01:58 recv >>> new_step
+16:01:58 send >>> no_action 2
+16:01:58 send >>> -1 4
+16:01:58 recv >>> no_action 1
+16:01:58 recv >>> no_action 3
+16:01:59 recv >>> new_step
+16:01:59 send >>> no_action 2
+16:01:59 send >>> no_action 4
+16:01:59 recv >>> no_action 1
+16:01:59 recv >>> kick 3 5 -1
+16:02:00 recv >>> new_step
+16:02:00 send >>> no_action 2
+16:02:00 send >>> no_action 4
+16:02:00 recv >>> no_action 1
+16:02:00 recv >>> no_action 3
+16:02:01 recv >>> new_step
+16:02:01 send >>> no_action 2
+16:02:01 send >>> no_action 4
+16:02:01 recv >>> no_action 1
+16:02:01 recv >>> no_action 3
+16:02:02 recv >>> new_step
+16:02:02 send >>> no_action 2
+16:02:02 send >>> kick 4 1 0
+16:02:02 recv >>> no_action 1
+16:02:02 recv >>> no_action 3
+16:02:03 recv >>> new_step
+16:02:03 send >>> no_action 2
+16:02:03 send >>> kick 4 5 1
+16:02:03 recv >>> no_action 1
+16:02:03 recv >>> no_action 3
+16:02:04 recv >>> new_step
+16:02:04 send >>> no_action 2
+16:02:04 send >>> 1 4
+16:02:04 recv >>> no_action 1
+16:02:04 recv >>> -1 3
+16:02:05 recv >>> new_step
+16:02:05 send >>> no_action 2
+16:02:05 send >>> no_action 4
+16:02:05 recv >>> no_action 1
+16:02:05 recv >>> kick 3 1 -1
+16:02:06 recv >>> new_step
+16:02:06 send >>> no_action 2
+16:02:06 send >>> no_action 4
+16:02:06 recv >>> no_action 1
+16:02:06 recv >>> 1 3
+16:02:07 recv >>> new_step
+16:02:07 send >>> no_action 2
+16:02:07 send >>> no_action 4
+16:02:07 recv >>> no_action 1
+16:02:07 recv >>> kick 3 4 0
+16:02:08 recv >>> new_step
+16:02:08 send >>> no_action 2
+16:02:08 send >>> kick 4 5 1
+16:02:08 recv >>> no_action 1
+16:02:08 recv >>> no_action 3
+16:02:09 recv >>> new_step
+16:02:09 send >>> no_action 2
+16:02:09 send >>> -1 4
+16:02:09 recv >>> no_action 1
+16:02:09 recv >>> no_action 3
+16:02:10 recv >>> new_step
+16:02:10 send >>> no_action 2
+16:02:10 send >>> no_action 4
+16:02:10 recv >>> no_action 1
+16:02:10 recv >>> kick 3 1 0
+16:02:11 recv >>> new_step
+16:02:11 send >>> no_action 2
+16:02:11 send >>> 1 4
+16:02:11 recv >>> no_action 1
+16:02:11 recv >>> kick 3 4 -1
+16:02:12 recv >>> new_step
+16:02:12 send >>> no_action 2
+16:02:12 send >>> no_action 4
+16:02:12 recv >>> no_action 1
+16:02:12 recv >>> no_action 3
+16:02:13 recv >>> new_step
+16:02:13 send >>> no_action 2
+16:02:13 send >>> kick 4 1 0
+16:02:13 recv >>> no_action 1
+16:02:13 recv >>> no_action 3
+16:02:14 recv >>> new_step
+16:02:14 send >>> no_action 2
+16:02:14 send >>> kick 4 5 -1
+16:02:14 recv >>> no_action 1
+16:02:14 recv >>> no_action 3
+16:02:15 recv >>> new_step
+16:02:15 send >>> no_action 2
+16:02:15 send >>> -1 4
+16:02:15 recv >>> no_action 1
+16:02:15 recv >>> no_action 3
+16:02:16 recv >>> new_step
+16:02:16 send >>> no_action 2
+16:02:16 send >>> no_action 4
+16:02:16 recv >>> no_action 1
+16:02:16 recv >>> kick 3 5 0
+16:02:17 recv >>> new_step
+16:02:17 send >>> no_action 2
+16:02:17 send >>> -1 4
+16:02:17 recv >>> no_action 1
+16:02:17 recv >>> no_action 3
+16:02:18 recv >>> new_step
+16:02:18 send >>> no_action 2
+16:02:18 send >>> kick 4 5 0
+16:02:18 recv >>> no_action 1
+16:02:18 recv >>> no_action 3
+16:02:19 recv >>> new_step
+16:02:19 send >>> no_action 2
+16:02:19 send >>> no_action 4
+16:02:19 recv >>> no_action 1
+16:02:19 recv >>> no_action 3
+16:02:20 recv >>> new_step
+16:02:20 send >>> no_action 2
+16:02:20 send >>> no_action 4
+16:02:20 recv >>> no_action 1
+16:02:20 recv >>> kick 3 1 1
+16:02:21 recv >>> new_step
+16:02:21 send >>> no_action 2
+16:02:21 send >>> 1 4
+16:02:21 recv >>> no_action 1
+16:02:21 recv >>> -1 3
+16:02:22 recv >>> new_step
+16:02:22 send >>> no_action 2
+16:02:22 send >>> no_action 4
+16:02:22 recv >>> no_action 1
+16:02:22 recv >>> kick 3 4 0
+16:02:23 recv >>> new_step
+16:02:23 send >>> no_action 2
+16:02:23 send >>> kick 4 5 1
+16:02:23 recv >>> no_action 1
+16:02:23 recv >>> no_action 3
+16:02:24 recv >>> new_step
+16:02:24 send >>> no_action 2
+16:02:24 send >>> 1 4
+16:02:24 recv >>> no_action 1
+16:02:24 recv >>> no_action 3
+16:02:25 recv >>> new_step
+16:02:25 send >>> no_action 2
+16:02:25 send >>> no_action 4
+16:02:25 recv >>> no_action 1
+16:02:25 recv >>> kick 3 1 -1
+16:02:26 recv >>> new_step
+16:02:26 send >>> no_action 2
+16:02:26 send >>> no_action 4
+16:02:26 recv >>> no_action 1
+16:02:26 recv >>> 1 3
+16:02:27 recv >>> new_step
+16:02:27 send >>> no_action 2
+16:02:27 send >>> no_action 4
+16:02:27 recv >>> no_action 1
+16:02:27 recv >>> kick 3 4 0
+16:02:28 recv >>> new_step
+16:02:28 send >>> no_action 2
+16:02:28 send >>> kick 4 5 1
+16:02:28 recv >>> no_action 1
+16:02:28 recv >>> no_action 3
+16:02:29 recv >>> new_step
+16:02:29 send >>> no_action 2
+16:02:29 send >>> -1 4
+16:02:29 recv >>> no_action 1
+16:02:29 recv >>> no_action 3
+16:02:30 recv >>> new_step
+16:02:30 send >>> no_action 2
+16:02:30 send >>> no_action 4
+16:02:30 recv >>> no_action 1
+16:02:30 recv >>> kick 3 1 0
+16:02:31 recv >>> new_step
+16:02:31 send >>> no_action 2
+16:02:31 send >>> 1 4
+16:02:31 recv >>> no_action 1
+16:02:31 recv >>> kick 3 4 -1
+16:02:32 recv >>> new_step
+16:02:32 send >>> no_action 2
+16:02:32 send >>> no_action 4
+16:02:32 recv >>> no_action 1
+16:02:32 recv >>> no_action 3
+16:02:33 recv >>> new_step
+16:02:33 send >>> no_action 2
+16:02:33 send >>> kick 4 1 0
+16:02:33 recv >>> no_action 1
+16:02:33 recv >>> no_action 3
+16:02:34 recv >>> new_step
+16:02:34 send >>> no_action 2
+16:02:34 send >>> kick 4 5 1
+16:02:34 recv >>> no_action 1
+16:02:34 recv >>> no_action 3
+16:02:35 recv >>> new_step
+16:02:35 send >>> no_action 2
+16:02:35 send >>> -1 4
+16:02:35 recv >>> no_action 1
+16:02:35 recv >>> no_action 3
+16:02:36 recv >>> new_step
+16:02:36 send >>> no_action 2
+16:02:36 send >>> no_action 4
+16:02:37 recv >>> no_action 1
+16:02:37 recv >>> kick 3 5 -1
+16:02:37 recv >>> new_step
+16:02:37 send >>> no_action 2
+16:02:37 send >>> no_action 4
+16:02:37 recv >>> no_action 1
+16:02:37 recv >>> no_action 3
+16:02:38 recv >>> new_step
+16:02:38 send >>> no_action 2
+16:02:38 send >>> no_action 4
+16:02:38 recv >>> no_action 1
+16:02:38 recv >>> no_action 3
+16:02:39 recv >>> new_step
+16:02:39 send >>> no_action 2
+16:02:39 send >>> kick 4 1 0
+16:02:39 recv >>> no_action 1
+16:02:40 recv >>> no_action 3
+16:02:40 recv >>> new_step
+16:02:41 send >>> no_action 2
+16:02:41 send >>> kick 4 5 1
+16:02:41 recv >>> no_action 1
+16:02:41 recv >>> no_action 3
+16:02:41 recv >>> new_step
+16:02:42 send >>> no_action 2
+16:02:42 send >>> 1 4
+16:02:42 recv >>> no_action 1
+16:02:42 recv >>> -1 3
+16:02:43 recv >>> new_step
+16:02:43 send >>> no_action 2
+16:02:43 send >>> no_action 4
+16:02:43 recv >>> no_action 1
+16:02:43 recv >>> kick 3 1 -1
+16:02:44 recv >>> new_step
+16:02:44 send >>> no_action 2
+16:02:44 send >>> no_action 4
+16:02:44 recv >>> no_action 1
+16:02:44 recv >>> 1 3
+16:02:45 recv >>> new_step
+16:02:45 send >>> no_action 2
+16:02:45 send >>> no_action 4
+16:02:45 recv >>> no_action 1
+16:02:45 recv >>> kick 3 4 0
+16:02:46 recv >>> new_step
+16:02:46 send >>> no_action 2
+16:02:46 send >>> kick 4 5 1
+16:02:46 recv >>> no_action 1
+16:02:46 recv >>> no_action 3
+16:02:47 recv >>> new_step
+16:02:47 send >>> no_action 2
+16:02:47 send >>> -1 4
+16:02:47 recv >>> no_action 1
+16:02:47 recv >>> no_action 3
+16:02:48 recv >>> new_step
+16:02:48 send >>> no_action 2
+16:02:48 send >>> no_action 4
+16:02:48 recv >>> no_action 1
+16:02:48 recv >>> kick 3 1 0
+16:02:49 recv >>> new_step
+16:02:49 send >>> no_action 2
+16:02:49 send >>> 1 4
+16:02:49 recv >>> no_action 1
+16:02:49 recv >>> kick 3 4 -1
+16:02:50 recv >>> new_step
+16:02:50 send >>> no_action 2
+16:02:50 send >>> no_action 4
+16:02:50 recv >>> no_action 1
+16:02:50 recv >>> no_action 3
+16:02:51 recv >>> new_step
+16:02:51 send >>> no_action 2
+16:02:51 send >>> kick 4 1 0
+16:02:51 recv >>> no_action 1
+16:02:51 recv >>> no_action 3
+16:02:52 recv >>> new_step
+16:02:52 send >>> no_action 2
+16:02:52 send >>> kick 4 5 1
+16:02:52 recv >>> no_action 1
+16:02:52 recv >>> no_action 3
+16:02:53 recv >>> new_step
+16:02:53 send >>> no_action 2
+16:02:53 send >>> -1 4
+16:02:53 recv >>> no_action 1
+16:02:53 recv >>> no_action 3
+16:02:54 recv >>> new_step
+16:02:54 send >>> no_action 2
+16:02:54 send >>> no_action 4
+16:02:54 recv >>> no_action 1
+16:02:54 recv >>> kick 3 5 -1
+16:02:55 recv >>> new_step
+16:02:55 send >>> no_action 2
+16:02:55 send >>> no_action 4
+16:02:55 recv >>> no_action 1
+16:02:55 recv >>> no_action 3
+16:02:56 recv >>> new_step
+16:02:56 send >>> no_action 2
+16:02:56 send >>> no_action 4
+16:02:56 recv >>> no_action 1
+16:02:56 recv >>> no_action 3
+16:02:57 recv >>> new_step
+16:02:57 send >>> no_action 2
+16:02:57 send >>> kick 4 1 0
+16:02:57 recv >>> no_action 1
+16:02:57 recv >>> no_action 3
+16:02:58 recv >>> new_step
+16:02:58 send >>> no_action 2
+16:02:58 send >>> kick 4 5 1
+16:02:58 recv >>> no_action 1
+16:02:58 recv >>> no_action 3
+16:02:59 recv >>> new_step
+16:02:59 send >>> no_action 2
+16:02:59 send >>> 1 4
+16:02:59 recv >>> no_action 1
+16:02:59 recv >>> -1 3
+16:03:00 recv >>> new_step
+16:03:00 send >>> no_action 2
+16:03:00 send >>> no_action 4
+16:03:00 recv >>> no_action 1
+16:03:00 recv >>> kick 3 1 -1
+16:03:01 recv >>> new_step
+16:03:01 send >>> no_action 2
+16:03:01 send >>> no_action 4
+16:03:01 recv >>> no_action 1
+16:03:01 recv >>> 1 3
+16:03:02 recv >>> new_step
+16:03:02 send >>> no_action 2
+16:03:02 send >>> no_action 4
+16:03:02 recv >>> no_action 1
+16:03:02 recv >>> kick 3 4 0
+16:03:03 recv >>> new_step
+16:03:03 send >>> no_action 2
+16:03:03 send >>> kick 4 5 1
+16:03:03 recv >>> no_action 1
+16:03:03 recv >>> no_action 3
+16:03:04 recv >>> new_step
+16:03:04 send >>> no_action 2
+16:03:04 send >>> -1 4
+16:03:04 recv >>> no_action 1
+16:03:04 recv >>> no_action 3
+16:03:05 recv >>> new_step
+16:03:05 send >>> no_action 2
+16:03:05 send >>> no_action 4
+16:03:05 recv >>> no_action 1
+16:03:05 recv >>> kick 3 1 0
+16:03:06 recv >>> new_step
+16:03:06 send >>> no_action 2
+16:03:06 send >>> 1 4
+16:03:06 recv >>> no_action 1
+16:03:06 recv >>> kick 3 4 -1
+16:03:07 recv >>> new_step
+16:03:07 send >>> no_action 2
+16:03:07 send >>> no_action 4
+16:03:07 recv >>> no_action 1
+16:03:07 recv >>> no_action 3
+16:03:08 recv >>> new_step
+16:03:08 send >>> no_action 2
+16:03:08 send >>> kick 4 1 0
+16:03:08 recv >>> no_action 1
+16:03:08 recv >>> no_action 3
+16:03:09 recv >>> new_step
+16:03:09 send >>> no_action 2
+16:03:09 send >>> kick 4 5 1
+16:03:09 recv >>> no_action 1
+16:03:09 recv >>> no_action 3
+16:03:10 recv >>> new_step
+16:03:10 send >>> no_action 2
+16:03:10 send >>> -1 4
+16:03:10 recv >>> no_action 1
+16:03:10 recv >>> no_action 3
+16:03:11 recv >>> new_step
+16:03:11 send >>> no_action 2
+16:03:11 send >>> no_action 4
+16:03:11 recv >>> no_action 1
+16:03:11 recv >>> kick 3 5 -1
+16:03:12 recv >>> new_step
+16:03:12 send >>> no_action 2
+16:03:12 send >>> no_action 4
+16:03:12 recv >>> no_action 1
+16:03:12 recv >>> no_action 3
+16:03:13 recv >>> new_step
+16:03:13 send >>> no_action 2
+16:03:13 send >>> no_action 4
+16:03:13 recv >>> no_action 1
+16:03:13 recv >>> no_action 3
+16:03:14 recv >>> new_step
+16:03:14 send >>> no_action 2
+16:03:14 send >>> kick 4 1 0
+16:03:14 recv >>> no_action 1
+16:03:14 recv >>> no_action 3
+16:03:15 recv >>> new_step
+16:03:15 send >>> no_action 2
+16:03:15 send >>> kick 4 5 1
+16:03:15 recv >>> no_action 1
+16:03:15 recv >>> no_action 3
+16:03:16 recv >>> new_step
+16:03:16 send >>> no_action 2
+16:03:16 send >>> 1 4
+16:03:16 recv >>> no_action 1
+16:03:16 recv >>> -1 3
+16:03:17 recv >>> new_step
+16:03:17 send >>> no_action 2
+16:03:17 send >>> no_action 4
+16:03:17 recv >>> no_action 1
+16:03:17 recv >>> kick 3 1 -1
+16:03:18 recv >>> new_step
+16:03:18 send >>> no_action 2
+16:03:18 send >>> no_action 4
+16:03:18 recv >>> no_action 1
+16:03:18 recv >>> -1 3
+16:03:19 recv >>> new_step
+16:03:19 send >>> no_action 2
+16:03:19 send >>> no_action 4
+16:03:19 recv >>> no_action 1
+16:03:19 recv >>> kick 3 4 0
+16:03:20 recv >>> new_step
+16:03:20 send >>> no_action 2
+16:03:20 send >>> kick 4 5 1
+16:03:20 recv >>> no_action 1
+16:03:20 recv >>> no_action 3
+16:03:21 recv >>> new_step
+16:03:21 send >>> no_action 2
+16:03:21 send >>> -1 4
+16:03:21 recv >>> no_action 1
+16:03:21 recv >>> 1 3
+16:03:22 recv >>> new_step
+16:03:22 send >>> no_action 2
+16:03:22 send >>> no_action 4
+16:03:22 recv >>> no_action 1
+16:03:22 recv >>> 1 3
+16:03:23 recv >>> new_step
+16:03:23 send >>> no_action 2
+16:03:23 send >>> no_action 4
+16:03:23 recv >>> no_action 1
+16:03:23 recv >>> kick 3 1 0
+16:03:24 recv >>> new_step
+16:03:24 send >>> no_action 2
+16:03:24 send >>> 1 4
+16:03:24 recv >>> no_action 1
+16:03:24 recv >>> kick 3 4 -1
+16:03:25 recv >>> new_step
+16:03:25 send >>> no_action 2
+16:03:25 send >>> no_action 4
+16:03:25 recv >>> no_action 1
+16:03:25 recv >>> no_action 3
+16:03:26 recv >>> new_step
+16:03:26 send >>> no_action 2
+16:03:26 send >>> kick 4 1 0
+16:03:26 recv >>> no_action 1
+16:03:26 recv >>> no_action 3
+16:03:27 recv >>> new_step
+16:03:27 send >>> no_action 2
+16:03:27 send >>> kick 4 5 1
+16:03:27 recv >>> no_action 1
+16:03:27 recv >>> no_action 3
+16:03:28 recv >>> new_step
+16:03:28 send >>> no_action 2
+16:03:28 send >>> -1 4
+16:03:28 recv >>> no_action 1
+16:03:28 recv >>> no_action 3
+16:03:29 recv >>> new_step
+16:03:29 send >>> no_action 2
+16:03:29 send >>> no_action 4
+16:03:29 recv >>> no_action 1
+16:03:29 recv >>> kick 3 5 -1
+16:03:30 recv >>> new_step
+16:03:30 send >>> no_action 2
+16:03:30 send >>> no_action 4
+16:03:30 recv >>> no_action 1
+16:03:30 recv >>> no_action 3
+16:03:31 recv >>> new_step
+16:03:31 send >>> no_action 2
+16:03:31 send >>> no_action 4
+16:03:31 recv >>> no_action 1
+16:03:31 recv >>> no_action 3
+16:03:32 recv >>> new_step
+16:03:32 send >>> no_action 2
+16:03:32 send >>> kick 4 1 0
+16:03:32 recv >>> no_action 1
+16:03:32 recv >>> no_action 3
+16:03:33 recv >>> new_step
+16:03:33 send >>> no_action 2
+16:03:33 send >>> kick 4 5 1
+16:03:33 recv >>> no_action 1
+16:03:33 recv >>> no_action 3
+16:03:34 recv >>> new_step
+16:03:34 send >>> no_action 2
+16:03:34 send >>> 1 4
+16:03:34 recv >>> no_action 1
+16:03:34 recv >>> -1 3
+16:03:35 recv >>> new_step
+16:03:35 send >>> no_action 2
+16:03:35 send >>> no_action 4
+16:03:35 recv >>> no_action 1
+16:03:35 recv >>> kick 3 1 -1
+16:03:36 recv >>> new_step
+16:03:36 send >>> no_action 2
+16:03:36 send >>> no_action 4
+16:03:36 recv >>> no_action 1
+16:03:36 recv >>> 1 3
+16:03:37 recv >>> new_step
+16:03:37 send >>> no_action 2
+16:03:37 send >>> no_action 4
+16:03:37 recv >>> no_action 1
+16:03:37 recv >>> kick 3 4 0
+16:03:38 recv >>> new_step
+16:03:38 send >>> no_action 2
+16:03:38 send >>> kick 4 5 1
+16:03:38 recv >>> no_action 1
+16:03:38 recv >>> no_action 3
+16:03:39 recv >>> new_step
+16:03:39 send >>> no_action 2
+16:03:39 send >>> -1 4
+16:03:39 recv >>> no_action 1
+16:03:39 recv >>> no_action 3
+16:03:40 recv >>> new_step
+16:03:40 send >>> no_action 2
+16:03:40 send >>> no_action 4
+16:03:40 recv >>> no_action 1
+16:03:40 recv >>> kick 3 5 -1
+16:03:41 recv >>> new_step
+16:03:41 send >>> no_action 2
+16:03:41 send >>> no_action 4
+16:03:41 recv >>> no_action 1
+16:03:41 recv >>> no_action 3
+16:03:42 recv >>> new_step
+16:03:42 send >>> no_action 2
+16:03:42 send >>> no_action 4
+16:03:42 recv >>> no_action 1
+16:03:42 recv >>> no_action 3
+16:03:43 recv >>> new_step
+16:03:43 send >>> no_action 2
+16:03:43 send >>> kick 4 1 0
+16:03:43 recv >>> no_action 1
+16:03:43 recv >>> no_action 3
+16:03:44 recv >>> new_step
+16:03:44 send >>> no_action 2
+16:03:44 send >>> kick 4 5 1
+16:03:44 recv >>> no_action 1
+16:03:44 recv >>> no_action 3
+16:03:45 recv >>> new_step
+16:03:45 send >>> no_action 2
+16:03:45 send >>> 1 4
+16:03:45 recv >>> no_action 1
+16:03:45 recv >>> -1 3
+16:03:46 recv >>> new_step
+16:03:46 send >>> no_action 2
+16:03:46 send >>> no_action 4
+16:03:47 recv >>> no_action 1
+16:03:47 recv >>> kick 3 1 1
+16:03:47 recv >>> new_step
+16:03:47 send >>> no_action 2
+16:03:47 send >>> no_action 4
+16:03:47 recv >>> no_action 1
+16:03:47 recv >>> 1 3
+16:03:48 recv >>> new_step
+16:03:48 send >>> no_action 2
+16:03:48 send >>> no_action 4
+16:03:48 recv >>> no_action 1
+16:03:49 recv >>> kick 3 4 -1
+16:03:49 recv >>> new_step
+16:03:49 send >>> no_action 2
+16:03:49 send >>> no_action 4
+16:03:49 recv >>> no_action 1
+16:03:50 recv >>> no_action 3
+16:03:50 recv >>> new_step
+16:03:51 send >>> no_action 2
+16:03:51 send >>> kick 4 1 0
+16:03:51 recv >>> no_action 1
+16:03:51 recv >>> no_action 3
+16:03:51 recv >>> new_step
+16:03:52 send >>> no_action 2
+16:03:52 send >>> kick 4 5 1
+16:03:52 recv >>> no_action 1
+16:03:52 recv >>> no_action 3
+16:03:53 recv >>> new_step
+16:03:53 send >>> no_action 2
+16:03:53 send >>> -1 4
+16:03:53 recv >>> no_action 1
+16:03:53 recv >>> no_action 3
+16:03:54 recv >>> new_step
+16:03:54 send >>> no_action 2
+16:03:54 send >>> no_action 4
+16:03:54 recv >>> no_action 1
+16:03:54 recv >>> kick 3 5 -1
+16:03:55 recv >>> new_step
+16:03:55 send >>> no_action 2
+16:03:55 send >>> no_action 4
+16:03:55 recv >>> no_action 1
+16:03:55 recv >>> no_action 3
+16:03:56 recv >>> new_step
+16:03:56 send >>> no_action 2
+16:03:56 send >>> no_action 4
+16:03:56 recv >>> no_action 1
+16:03:56 recv >>> no_action 3
+16:03:57 recv >>> new_step
+16:03:57 send >>> no_action 2
+16:03:57 send >>> kick 4 1 0
+16:03:57 recv >>> no_action 1
+16:03:57 recv >>> no_action 3
+16:03:58 recv >>> new_step
+16:03:58 send >>> no_action 2
+16:03:58 send >>> kick 4 5 1
+16:03:58 recv >>> no_action 1
+16:03:58 recv >>> no_action 3
+16:03:59 recv >>> new_step
+16:03:59 send >>> no_action 2
+16:03:59 send >>> 1 4
+16:03:59 recv >>> no_action 1
+16:03:59 recv >>> -1 3
+16:04:00 recv >>> new_step
+16:04:00 send >>> no_action 2
+16:04:00 send >>> no_action 4
+16:04:00 recv >>> no_action 1
+16:04:00 recv >>> kick 3 1 -1
+16:04:01 recv >>> new_step
+16:04:01 send >>> no_action 2
+16:04:01 send >>> no_action 4
+16:04:01 recv >>> no_action 1
+16:04:01 recv >>> -1 3
+16:04:02 recv >>> new_step
+16:04:02 send >>> no_action 2
+16:04:02 send >>> no_action 4
+16:04:02 recv >>> no_action 1
+16:04:02 recv >>> kick 3 4 0
+16:04:03 recv >>> new_step
+16:04:03 send >>> no_action 2
+16:04:03 send >>> kick 4 5 1
+16:04:03 recv >>> no_action 1
+16:04:03 recv >>> no_action 3
+16:04:04 recv >>> new_step
+16:04:04 send >>> no_action 2
+16:04:04 send >>> -1 4
+16:04:04 recv >>> no_action 1
+16:04:04 recv >>> 1 3
+16:04:05 recv >>> new_step
+16:04:05 send >>> no_action 2
+16:04:05 send >>> no_action 4
+16:04:05 recv >>> no_action 1
+16:04:05 recv >>> 1 3
+16:04:06 recv >>> new_step
+16:04:06 send >>> no_action 2
+16:04:06 send >>> no_action 4
+16:04:06 recv >>> no_action 1
+16:04:06 recv >>> kick 3 1 0
+16:04:07 recv >>> new_step
+16:04:07 send >>> no_action 2
+16:04:07 send >>> 1 4
+16:04:07 recv >>> no_action 1
+16:04:07 recv >>> kick 3 4 -1
+16:04:08 recv >>> new_step
+16:04:08 send >>> no_action 2
+16:04:08 send >>> no_action 4
+16:04:08 recv >>> no_action 1
+16:04:08 recv >>> no_action 3
+16:04:09 recv >>> new_step
+16:04:09 send >>> no_action 2
+16:04:09 send >>> kick 4 1 0
+16:04:09 recv >>> no_action 1
+16:04:09 recv >>> no_action 3
+16:04:10 recv >>> new_step
+16:04:10 send >>> no_action 2
+16:04:10 send >>> kick 4 5 1
+16:04:10 recv >>> no_action 1
+16:04:10 recv >>> no_action 3
+16:04:11 recv >>> new_step
+16:04:11 send >>> no_action 2
+16:04:11 send >>> -1 4
+16:04:11 recv >>> no_action 1
+16:04:11 recv >>> no_action 3
+16:04:12 recv >>> new_step
+16:04:12 send >>> no_action 2
+16:04:12 send >>> no_action 4
+16:04:12 recv >>> no_action 1
+16:04:12 recv >>> kick 3 1 0
+16:04:13 recv >>> new_step
+16:04:13 send >>> no_action 2
+16:04:13 send >>> 1 4
+16:04:13 recv >>> no_action 1
+16:04:13 recv >>> kick 3 4 -1
+16:04:14 recv >>> new_step
+16:04:14 send >>> no_action 2
+16:04:14 send >>> no_action 4
+16:04:14 recv >>> no_action 1
+16:04:14 recv >>> no_action 3
+16:04:15 recv >>> new_step
+16:04:15 send >>> no_action 2
+16:04:15 send >>> kick 4 1 0
+16:04:15 recv >>> no_action 1
+16:04:15 recv >>> no_action 3
+16:04:16 recv >>> new_step
+16:04:16 send >>> no_action 2
+16:04:16 send >>> kick 4 5 1
+16:04:16 recv >>> no_action 1
+16:04:16 recv >>> no_action 3
+16:04:17 recv >>> new_step
+16:04:17 send >>> no_action 2
+16:04:17 send >>> -1 4
+16:04:17 recv >>> no_action 1
+16:04:17 recv >>> no_action 3
+16:04:18 recv >>> new_step
+16:04:18 send >>> no_action 2
+16:04:18 send >>> no_action 4
+16:04:18 recv >>> no_action 1
+16:04:18 recv >>> kick 3 5 -1
+16:04:19 recv >>> new_step
+16:04:19 send >>> no_action 2
+16:04:19 send >>> no_action 4
+16:04:19 recv >>> no_action 1
+16:04:19 recv >>> no_action 3
+16:04:20 recv >>> new_step
+16:04:20 send >>> no_action 2
+16:04:20 send >>> no_action 4
+16:04:20 recv >>> no_action 1
+16:04:20 recv >>> no_action 3
+16:04:21 recv >>> new_step
+16:04:21 send >>> no_action 2
+16:04:21 send >>> kick 4 1 0
+16:04:21 recv >>> no_action 1
+16:04:21 recv >>> no_action 3
+16:04:22 recv >>> new_step
+16:04:22 send >>> no_action 2
+16:04:22 send >>> kick 4 5 1
+16:04:22 recv >>> no_action 1
+16:04:22 recv >>> no_action 3
+16:04:23 recv >>> new_step
+16:04:23 send >>> no_action 2
+16:04:23 send >>> 1 4
+16:04:23 recv >>> no_action 1
+16:04:23 recv >>> -1 3
+16:04:24 recv >>> new_step
+16:04:24 send >>> no_action 2
+16:04:24 send >>> no_action 4
+16:04:24 recv >>> no_action 1
+16:04:24 recv >>> kick 3 1 -1
+16:04:25 recv >>> new_step
+16:04:25 send >>> no_action 2
+16:04:25 send >>> no_action 4
+16:04:25 recv >>> no_action 1
+16:04:25 recv >>> -1 3
+16:04:26 recv >>> new_step
+16:04:26 send >>> no_action 2
+16:04:26 send >>> no_action 4
+16:04:26 recv >>> no_action 1
+16:04:26 recv >>> kick 3 4 0
