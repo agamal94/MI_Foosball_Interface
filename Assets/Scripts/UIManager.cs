@@ -172,13 +172,18 @@ public class UIManager : MonoBehaviour
 	{
 		SharedObjects.Host = false;
 		ConnectWithImplementation();
-		SharedObjects.Writer.Write("BLUE");
+		yield return Ninja.JumpToUnity;
+		string alpha = alphatext.ToString();
+		string beta = betatext.ToString();
+		string epsilon = epsilontext.ToString();
+		yield return Ninja.JumpBack;
+		SharedObjects.Writer.Write("BLUE" + alpha + " " + beta + " " + epsilon);
 		SharedObjects.Writer.Flush();
 		try
 		{
 			Int32 port = 3000;
-            //String localIPAddress;
-            SharedObjects.TcpClient = new TcpClient(getHostIp(), port);
+			//String localIPAddress;
+			SharedObjects.TcpClient = new TcpClient(getHostIp(), port);
 			SharedObjects.TcpStream = SharedObjects.TcpClient.GetStream();
 		}
 		catch (SocketException e)
