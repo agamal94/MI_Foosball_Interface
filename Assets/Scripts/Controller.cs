@@ -7,6 +7,7 @@ using System.IO;
 using System.Text;
 using System.Globalization;
 using UnityEngine.UI;
+using System.Net;
 
 public class Controller : MonoBehaviour {
 
@@ -68,7 +69,7 @@ public class Controller : MonoBehaviour {
 
     void Start() {
 		
-		logFile = File.Create("Logfile.txt");
+		logFile = File.Create((SharedObjects.TcpClient.Client.RemoteEndPoint as IPEndPoint).Address.ToString() + " " + (SharedObjects.Host?"Host":"Guest"));
 		textWriter = new StreamWriter(logFile);
 
         targetPosition1 = Rod1.transform.position;
@@ -279,13 +280,22 @@ public class Controller : MonoBehaviour {
         EscapeMenu.SetActive(false);
     }
 
-	public void setScore(int red, int blue)
-	{
-		RedScore.text = red.ToString();
-		BlueScore.text = blue.ToString();
+    public void setScore(int red, int blue)
+    {
+        if (RedScore.text != red.ToString() || BlueScore.text != blue.ToString())
+        {
+            ResetRods();
+            RedScore.text = red.ToString();
+            BlueScore.text = blue.ToString();
+        }
 	}
 
-	public void checkInput()
+    public void ResetRods()
+    {
+
+    }
+
+    public void checkInput()
 	{
 
 //		if (Input.GetKeyDown(KeyCode.A))
@@ -386,10 +396,12 @@ public class Controller : MonoBehaviour {
 
     private void WriteToNetworkStream(string s)
     {
-        byte[] messageLength = new byte[1];
-        messageLength[0] = (byte)s.Length;
-        SharedObjects.TcpStream.Write(messageLength, 0, 1);
-        byte[] buffer = ASCIIEncoding.ASCII.GetBytes(s);
+        byte messageLength = (byte)s.Length;
+        //SharedObjects.TcpStream.Write(messageLength, 0, 1);
+        byte[] message =  ASCIIEncoding.ASCII.GetBytes(s);
+        byte[] buffer = new byte[message.Length + 1];
+        buffer[0] = messageLength;
+        message.CopyTo(buffer, 1);
         SharedObjects.TcpStream.Write(buffer, 0, buffer.Length);
         DateTime localDate = DateTime.Now;
         textWriter.WriteLine(localDate.ToString("HH:mm:ss") + " send" + " >>> " + s);
