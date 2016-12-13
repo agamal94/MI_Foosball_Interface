@@ -119,12 +119,16 @@ public class UIManager : MonoBehaviour
         yield return Ninja.JumpBack;
         SharedObjects.Writer.Write("RED " + alpha + " " + beta + " " + epsilon);
 		SharedObjects.Writer.Flush();
+
+		yield return Ninja.JumpToUnity;
+		Debug.Log(GetLocalIPAddress());
+		IPAddress localAddr = IPAddress.Parse(GetLocalIPAddress());
+		yield return Ninja.JumpBack;
 		try
 		{
 			// Set the TcpListener on port 13000.
 			Int32 port = 3000;
-            Debug.Log(GetLocalIPAddress());
-            IPAddress localAddr = IPAddress.Parse(GetLocalIPAddress());
+
 
 
 			SharedObjects.TcpServer = new TcpListener(localAddr, port);
